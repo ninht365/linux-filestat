@@ -1,0 +1,15 @@
+cat << 'EOF' > .gitignore
+# Binary executable
+filestat
+
+# Temporary test artifacts
+sample_file.txt
+sample_link
+test_dir/
+
+# Object and temporary files
+*.o
+*.swp
+*~
+.DS_Store
+EOF
