@@ -28,8 +28,8 @@ linux_filestat_project/
 ### 2.2. Lệnh gọi hệ thống lstat() và cấu trúc struct stat
 * Sử dụng lệnh gọi hệ thống `lstat(const char *pathname, struct stat *statbuf)` từ thư viện `<sys/stat.h>`.
 * **Phân biệt `lstat()` và `stat()`:**
-  * `stat()`: Tự động phân giải liên kết mềm (dereference symbolic link) và trả về thông tin của file đích mà link đó trỏ tới.
-  * `lstat()`: Trả về thông tin của **chính bản thân liên kết mềm (Symbolic Link)** đó, giúp chương trình nhận diện chính xác loại đối tượng là `Symbolic Link`.
+  * `stat()`: Tự động phân giải liên kết mềm và trả về thông tin của file đích mà link đó trỏ tới.
+  * `lstat()`: Trả về thông tin của **chính bản thân liên kết mềm** đó, giúp chương trình nhận diện chính xác loại đối tượng là `Symbolic Link`.
 
 ### 2.3. Nhận diện loại tệp tin
 Sử dụng trường `st_mode` của `struct stat` kết hợp với các macro chuẩn POSIX trong `<sys/stat.h>`:
@@ -39,7 +39,7 @@ Sử dụng trường `st_mode` của `struct stat` kết hợp với các macro
 * Ngoài ra, chương trình mở rộng nhận diện thêm các loại tệp tin đặc biệt: `Character Device`, `Block Device`, `FIFO / Pipe`, `Socket`.
 
 ### 2.4. Trích xuất dung lượng và thời gian sửa đổi
-* **Kích thước tệp (Size):** Lấy trực tiếp từ trường `st_size` với đơn vị tính là `bytes`.
+* **Kích thước tệp:** Lấy trực tiếp từ trường `st_size` với đơn vị tính là `bytes`.
 * **Thời gian sửa đổi lần cuối (Last Modified):** Lấy giá trị timestamp (`time_t`) từ trường `st_mtime`, sau đó dùng hàm `localtime()` và `strftime()` từ `<time.h>` để định dạng thành chuỗi ngày giờ tiêu chuẩn: `YYYY-MM-DD HH:MM:SS`.
 
 ## 3. HƯỚNG DẪN BIÊN DỊCH VÀ CHẠY CHƯƠNG TRÌNH
